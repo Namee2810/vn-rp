@@ -19,6 +19,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/ragemp-c": "https://github.com/CocaColaBear/types-ragemp-c/tarball/master",
-    "@types/ragemp-s": "https://github.com/CocaColaBear/types-ragemp-s/tarball/master"
+    "@types/ragemp-s": "https://github.com/CocaColaBear/types-ragemp-s/tarball/master",
+    "mysql2": "^2.2.5"
   }
 }
