@@ -1,2 +1,0 @@
-require("./playerDeath");
-require("./playerJoin");

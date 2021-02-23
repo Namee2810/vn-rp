@@ -1,0 +1,94 @@
+$color-primary: #1ed760;
+
+#AuthPage {
+  font-family: "Quicksand";
+
+  align-self: center;
+  width: 900px;
+  height: 600px;
+  position: relative;
+
+  display: flex;
+  background: white;
+
+  animation: AuthPage 1s ease-in-out;
+
+  &_form {
+    background: white;
+    width: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 1.5s ease;
+  }
+  &_panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: url("../../assets/img/AuthPage_panel_bg.png");
+    background-position: center;
+    width: 40%;
+
+    transition: transform 1.5s ease;
+
+    span:first-child {
+      font: {
+        size: 34px;
+        weight: bold;
+      }
+      color: white;
+    }
+    &_header {
+      transition: opacity 0.25s;
+    }
+    &_button {
+      transition: opacity 0.25s;
+    }
+  }
+  &_header {
+    font: {
+      size: 24px;
+      weight: bold;
+    }
+    margin-bottom: 20px;
+  }
+  &_forgot {
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &_bg {
+    left: -170px;
+    bottom: 0;
+    position: absolute;
+    animation: AuthPage_bg 0.75s ease-in-out 0.25s backwards;
+    transition: left 0.75s ease-in-out;
+  }
+}
+
+@keyframes AuthPage {
+  from {
+    opacity: 0;
+    background: transparent;
+  }
+  to {
+    opacity: 1;
+    background: white;
+  }
+}
+@keyframes AuthPage_bg {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
