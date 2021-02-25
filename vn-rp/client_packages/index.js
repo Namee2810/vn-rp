@@ -1,6 +1,11 @@
-require("vn-rp/discord.js");
+require("vn-rp");
+require("./rage-rpc.min.js");
 
-mp.events.call("setDiscordStatus", "Đang chơi VN-RP.COM", "Đang build server");
+//bind
+mp.keys.bind(0x12, true, () => {
+  mp.gui.cursor.visible = !mp.gui.cursor.visible;
+})
 
-mp.browsers.new("package://vn-rp/CEF/index.html#/login");
-mp.gui.chat.push('WOOOOOOAH, Trình duyệt CEF đã được tạo!');
+if (mp.game.ui.isPauseMenuActive()) {
+  mp.game.ui.setFrontendActive(false);
+}

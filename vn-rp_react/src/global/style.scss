@@ -9,6 +9,7 @@ $color-info-hover: #2b89ad;
 
 .form {
   position: relative;
+  width: 300px;
   font: {
     size: 18px;
   }
@@ -46,7 +47,10 @@ $color-info-hover: #2b89ad;
     left: 20px;
     bottom: -20px;
 
+    white-space: nowrap;
+    text-align: center;
     color: red;
+
     font: {
       size: 14px;
       weight: 600;
@@ -56,9 +60,11 @@ $color-info-hover: #2b89ad;
 }
 @keyframes form_error {
   from {
+    transform: translateX(-10px);
     opacity: 0;
   }
   to {
+    transform: translateX(0px);
     opacity: 1;
   }
 }
@@ -118,4 +124,7 @@ input {
       background: $color-danger-hover;
     }
   }
+}
+.ant-notification {
+  z-index: 999;
 }

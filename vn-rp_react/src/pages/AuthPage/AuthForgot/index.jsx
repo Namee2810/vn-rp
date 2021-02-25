@@ -1,6 +1,9 @@
 import { MailOutlined } from "@ant-design/icons";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { createNoti } from "components/Notification";
+import rpc from "rage-rpc";
 import React from "react";
+import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
@@ -13,10 +16,43 @@ const schema = yup.object().shape({
     .matches(emailRegex, "Email không hợp lệ")
 });
 
-function AuthForgot() {
+function AuthForgot(props) {
+  const { setEmail, setStep } = props;
   const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    const { email } = data;
+    const submit_btn = document.getElementById("submit_btn");
+    submit_btn.disabled = true;
+    rpc.callServer("server:auth.forgot", email).then(code => {
+      submit_btn.disabled = false;
+      switch (code) {
+        case 1: {
+          createNoti("success", "1 mã xác minh đã được gửi tới email 🎉!");
+          setTimeout(() => {
+            const AuthPage_header = document.getElementById("AuthPage_header");
+            ReactDOM.render("Xác minh email (Quên mật khẩu)", AuthPage_header);
+
+            setStep(5);
+            setEmail(email);
+          }, 500);
+          break;
+        }
+        case 2: {
+          createNoti("warning", "Email này chưa đăng kí 😥!")
+          break;
+        }
+        case 3: {
+          createNoti("error", "Lỗi máy chủ, vui lòng thử lại sau 😭!")
+          break;
+        }
+        default: {
+          createNoti("error", "Lỗi không xác định, vui lòng thử lại sau 😭!")
+          break;
+        }
+      }
+    })
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -36,7 +72,7 @@ function AuthForgot() {
       </div>
 
       <div className="form_submit">
-        <button className="btn btn-success">Xác nhận</button>
+        <button className="btn btn-success" id="submit_btn">Xác nhận</button>
       </div>
     </form>
   );

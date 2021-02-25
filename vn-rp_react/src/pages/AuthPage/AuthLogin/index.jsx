@@ -1,5 +1,7 @@
 import { EyeInvisibleOutlined, EyeOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { createNoti } from "components/Notification";
+import rpc from "rage-rpc";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -16,14 +18,46 @@ const schema = yup.object().shape({
     .required("Vui lòng nhập mật khẩu"),
 });
 
-function AuthLogin() {
+function AuthLogin(props) {
+  const { handleChangeStep, setEmail } = props;
   const [eye, setEye] = useState(false);
   const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(schema) });
 
   const handleEye = () => {
     setEye(!eye);
   }
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    const { email, password } = data;
+    const submit_btn = document.getElementById("submit_btn");
+    submit_btn.disabled = true;
+    rpc.callServer("server:auth.login", { email, password }).then(code => {
+      submit_btn.disabled = false;
+      switch (code) {
+        case 1: {
+          createNoti("success", "Đăng nhập thành công 🎉!");
+          break;
+        }
+        case 2: {
+          createNoti("warning", "Tài khoản hoặc mật khẩu không chính xác 😥!")
+          break;
+        }
+        case 3: {
+          createNoti("error", "Tài khoản chưa xác minh !");
+          setEmail(email);
+          handleChangeStep(1, 3);
+          break;
+        }
+        case 4: {
+          createNoti("error", "Lỗi máy chủ, vui lòng thử lại sau 😭!")
+          break;
+        }
+        default: {
+          createNoti("error", "Lỗi không xác định, vui lòng thử lại sau 😭!")
+          break;
+        }
+      }
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -60,7 +94,7 @@ function AuthLogin() {
       </div>
 
       <div className="form_submit">
-        <button className="btn btn-success">Đăng nhập</button>
+        <button className="btn btn-success" id="submit_btn">Đăng nhập</button>
       </div>
     </form>
   );

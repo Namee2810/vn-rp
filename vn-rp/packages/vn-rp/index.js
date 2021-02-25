@@ -1,7 +1,8 @@
 require("./commands");
 require("./events");
 require("./db");
-
+require("./events");
+require("./commands");
 
 //test connect database
 global.mysql.query(

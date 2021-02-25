@@ -1,20 +1,33 @@
+import Notification from 'components/Notification';
 import AuthPage from 'pages/AuthPage';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import {
-  BrowserRouter as Router
+  HashRouter as Router
 } from "react-router-dom";
+import { setProduction } from 'store/slice';
 import "./App.scss";
 
 function App(props) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      dispatch(setProduction({ set: true }))
+    }
+  }, [dispatch])
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/auth" component={AuthPage} />
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path="/auth" component={AuthPage} />
+            <Route exact path="/noti" component={Notification} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
+
   )
 }
 

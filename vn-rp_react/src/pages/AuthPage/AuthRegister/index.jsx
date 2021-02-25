@@ -1,6 +1,9 @@
 import { EyeInvisibleOutlined, EyeOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { createNoti } from "components/Notification";
+import rpc from "rage-rpc";
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
@@ -20,7 +23,8 @@ const schema = yup.object().shape({
     .matches(passwordRegex, "Mật khẩu cần ít nhất 8 kí tự, 1 chữ hoa và 1 chữ thường"),
 });
 
-function AuthRegister() {
+function AuthRegister(props) {
+  const { setStep, setEmail } = props;
   const [eye1, setEye1] = useState(false);
   const [eye2, setEye2] = useState(false);
   const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(schema) });
@@ -31,7 +35,44 @@ function AuthRegister() {
   const handleEye2 = () => {
     setEye2(!eye2);
   }
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    const { email, password, repassword } = data;
+    if (password !== repassword) {
+      createNoti("error", "Mật khẩu nhập lại không khớp")
+    }
+    else {
+      const submit_btn = document.getElementById("submit_btn");
+      submit_btn.disabled = true;
+      rpc.callServer("server:auth.register", { email, password }).then(code => {
+        submit_btn.disabled = false;
+        switch (code) {
+          case 1: {
+            createNoti("success", "1 mã xác minh đã được gửi tới email 🎉!");
+            setTimeout(() => {
+              const AuthPage_header = document.getElementById("AuthPage_header");
+              ReactDOM.render("Xác minh email", AuthPage_header);
+
+              setStep(3);
+              setEmail(email);
+            }, 500);
+            break;
+          }
+          case 2: {
+            createNoti("warning", "Email này đã được sử dụng 😥!")
+            break;
+          }
+          case 3: {
+            createNoti("error", "Lỗi máy chủ, vui lòng thử lại sau 😭!")
+            break;
+          }
+          default: {
+            createNoti("error", "Lỗi không xác định, vui lòng thử lại sau 😭!")
+            break;
+          }
+        }
+      });
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -85,7 +126,7 @@ function AuthRegister() {
       </div>
 
       <div className="form_submit">
-        <button className="btn btn-success">Đăng kí</button>
+        <button className="btn btn-success" id="submit_btn">Đăng kí</button>
       </div>
     </form>
   );
