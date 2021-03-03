@@ -1,3 +1,4 @@
 require("./playerDeath");
 require("./playerJoin");
-require("./auth");
+require("./playerReady");
+require("./features");

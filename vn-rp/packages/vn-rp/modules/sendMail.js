@@ -13,12 +13,12 @@ function sendMail(email, verify, type) {
   switch (type) {
     case 1: {
       subject = 'Xác minh email đăng kí';
-      html = `Mã xác minh của là <b>${verify}</b>, chúc bạn chơi game vui vẻ ❤️!!!`;
+      html = `Mã xác minh của bạn là <b>${verify}</b>, chúc bạn chơi game vui vẻ ❤️!!!`;
       break;
     }
     case 2: {
       subject = "Quên mật khẩu";
-      html = `Mã xác minh của là <b>${verify}</b>, chúc bạn chơi game vui vẻ ❤️!!!`;
+      html = `Mã xác minh của bạn là <b>${verify}</b>, chúc bạn chơi game vui vẻ ❤️!!!`;
       break;
     }
     default: break;

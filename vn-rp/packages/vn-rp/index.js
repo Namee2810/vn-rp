@@ -1,14 +1,24 @@
 require("./commands");
 require("./events");
-require("./db");
+require("./modules/db");
 require("./events");
 require("./commands");
+require("./functions");
 
-//test connect database
-global.mysql.query(
-  'SELECT * FROM `test`',
-  function (err, res) {
-    if (err) console.log(err);
-    else console.log("Connected database");
+mp.events.delayInitialization = true;
+
+function serverInit() {
+  //sync time
+  const setWorldTime = () => {
+    const now = new Date();
+    mp.world.time.set(now.getHours(), now.getMinutes(), now.getSeconds());
   }
-);
+  setWorldTime()
+  setInterval(() => {
+    setWorldTime();
+  }, 60000);
+
+  mp.events.delayInitialization = true;
+}
+
+serverInit();

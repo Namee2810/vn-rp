@@ -1,3 +1,7 @@
+const rpc = require("./rage-rpc.min.js");
+
 mp.events.add('guiReady', () => {
-  mp.events.call("client:auth.show");
+  rpc.call("client:auth.show");
+  const player = mp.players.local;
+  player.model = mp.game.joaat("mp_m_freemode_01");
 });

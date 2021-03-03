@@ -2,13 +2,19 @@ import { notification } from 'antd';
 import React from 'react';
 
 let count = 0;
+let list = [];
 function createNoti(type, message) {
   count++;
-  if (count > 5) {
-    notification.destroy();
-    count = 1;
-  }
-  notification[type]({ message });
+  if (list.length > 4) notification.close(list.shift());
+
+  notification[type]({
+    key: count,
+    message,
+    onClose: () => {
+      list.shift();
+    }
+  });
+  list.push(count);
 }
 
 function Notification(props) {

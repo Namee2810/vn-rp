@@ -1,5 +1,7 @@
 import Notification from 'components/Notification';
-import AuthPage from 'pages/AuthPage';
+import Auth from 'pages/Auth';
+import Characters from 'pages/Characters';
+import Customize from 'pages/Customize';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';
@@ -21,7 +23,9 @@ function App(props) {
       <Router>
         <div className="App">
           <Switch>
-            <Route exact path="/auth" component={AuthPage} />
+            <Route exact path="/auth" component={Auth} />
+            <Route exact path="/characters" component={Characters} />
+            <Route exact path="/customize" component={Customize} />
             <Route exact path="/noti" component={Notification} />
           </Switch>
         </div>

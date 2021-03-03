@@ -1,0 +1,87 @@
+@import "./theme.scss";
+
+.ant-btn {
+  &:hover {
+    color: $color-primary !important;
+    border-color: $color-primary;
+  }
+  &:focus {
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+
+  &-primary {
+    background: $color-primary !important;
+    border: $color-primary;
+
+    &:hover {
+      color: white !important;
+      background: $color-primary-hover;
+    }
+    &:focus {
+      color: white !important;
+      background: $color-primary;
+      border: $color-primary;
+    }
+  }
+}
+.ant-popover {
+  &-inner {
+    background: #222;
+  }
+  &-message {
+    &-title {
+      color: white;
+    }
+    & > .anticon {
+      color: white;
+    }
+  }
+
+  &-arrow {
+    border-color: #222 !important;
+  }
+
+  & .ant-btn {
+    background: none;
+    color: white;
+  }
+}
+.ant-divider {
+  margin: 20px 0 10px !important;
+  &::before {
+    border-top-color: $color-primary !important;
+  }
+  &::after {
+    border-top-color: $color-primary !important;
+  }
+
+  &-inner-text {
+    color: $color-primary;
+    font: {
+      size: 24px;
+      weight: bold;
+    }
+  }
+}
+.ant-slider {
+  margin: 6px;
+  &:hover {
+    & .ant-slider-track {
+      background: $color-primary;
+    }
+    & .ant-slider-handle {
+      border-color: $color-primary !important;
+    }
+  }
+  &-track {
+    background: $color-primary;
+  }
+  &-handle {
+    border-color: white;
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+}

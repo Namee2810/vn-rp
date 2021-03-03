@@ -1,12 +1,5 @@
-$color-primary: #0dd61c;
-$color-primary-hover: #0ec71a;
-$color-danger: #ff0000;
-$color-danger-hover: #e40000;
-$color-warning: #ffb818;
-$color-warning-hover: #e49f00;
-$color-info: #3ea1c8;
-$color-info-hover: #2b89ad;
-
+@import "./antd.scss";
+@import "./theme.scss";
 .form {
   position: relative;
   width: 300px;
@@ -31,7 +24,7 @@ $color-info-hover: #2b89ad;
   }
 
   &_input {
-    padding: 0 10px 0 20px;
+    padding: 0 10px 0 15px;
     border: none;
     font: {
       size: 16px;
@@ -74,23 +67,34 @@ input {
   }
   border: none;
 }
+.select {
+  color: $color-primary;
+}
+.select-bg {
+  background: $color-primary !important;
+}
 .btn {
   outline: none;
-  border: none;
+  border: 1px solid transparent;
 
   font: {
     size: 18px;
     weight: 600;
   }
 
+  padding: 0 20px;
+
   border-radius: 50px;
-  height: 50px;
-  width: 200px;
+  min-height: 45px;
+  min-width: 100px;
 
   transition: background 0.25s ease-in-out;
   cursor: pointer;
   &:active {
     box-shadow: 0 1.5px 3.1px rgba(0, 0, 0, 0.035), 0 12px 25px rgba(0, 0, 0, 0.07);
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
   &-success {
     background: $color-primary;
@@ -98,6 +102,16 @@ input {
 
     &:hover {
       background: $color-primary-hover;
+    }
+
+    &-outline {
+      border-color: $color-primary;
+      color: white;
+      background: none;
+
+      &:hover {
+        background: $color-primary-hover;
+      }
     }
   }
   &-info {
@@ -107,6 +121,15 @@ input {
     &:hover {
       background: $color-info-hover;
     }
+    &-outline {
+      border-color: $color-info;
+      color: white;
+      background: none;
+
+      &:hover {
+        background: $color-info-hover;
+      }
+    }
   }
   &-warning {
     background: $color-warning;
@@ -114,6 +137,15 @@ input {
 
     &:hover {
       background: $color-warning-hover;
+    }
+    &-outline {
+      border-color: $color-warning;
+      color: white;
+      background: none;
+
+      &:hover {
+        background: $color-warning-hover;
+      }
     }
   }
   &-danger {
@@ -123,8 +155,36 @@ input {
     &:hover {
       background: $color-danger-hover;
     }
+    &-outline {
+      border-color: $color-danger;
+      color: white;
+      background: none;
+
+      &:hover {
+        background: $color-danger-hover;
+      }
+    }
   }
 }
 .ant-notification {
   z-index: 999;
+}
+.icon {
+  transform: translateY(5px);
+}
+.coin {
+  color: #ffd000;
+}
+.tag {
+  transform: translateY(-2px);
+  font-weight: bold;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

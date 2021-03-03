@@ -1,0 +1,203 @@
+$color-primary: #1ed760;
+
+#Characters {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade 0.75s ease-in-out;
+
+  &_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 75px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+
+      margin: 5px 0 0 20px;
+      padding: 0 40px 5px 10px;
+
+      background: rgba(14, 199, 26, 0.8);
+      border-radius: 10px;
+      animation: Characters_header_1 0.5s ease-in-out 0.5s backwards;
+      & > div {
+        &:nth-child(1) {
+          font: {
+            size: 20px;
+            weight: bold;
+          }
+        }
+      }
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: right;
+      min-width: 250px;
+
+      margin: 5px 20px 0 0;
+      padding: 0 10px 3px 40px;
+
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      animation: Characters_header_2 0.5s ease-in-out 1s backwards;
+
+      & > div {
+        &:nth-child(1) {
+          font: {
+            size: 18px;
+            weight: bold;
+          }
+        }
+        &:nth-child(2) {
+          font: {
+            size: 16px;
+            weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+.Characters {
+  &_cards {
+    width: 1200px;
+    height: 650px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+
+    animation: Characters_cards 0.5s ease-in-out;
+  }
+  &_card {
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+
+    &_header {
+      height: 75px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    &_title {
+      display: flex;
+      align-items: center;
+      padding: 10px 30px;
+      font: {
+        size: 16px;
+      }
+    }
+    &_slot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font: {
+        size: 26px;
+        weight: bold;
+      }
+    }
+    &_image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_button {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_nonCharacter {
+      display: grid;
+      grid-template-rows: 180px 70px 210px;
+    }
+    &_character {
+      display: grid;
+      grid-gap: 15px;
+      justify-content: center;
+      flex-direction: column;
+    }
+    &_slot {
+      &Name {
+        padding-top: 10px;
+        font: {
+          size: 22px;
+          weight: bold;
+        }
+        color: $color-primary;
+      }
+      &Title {
+        font: {
+          size: 18px;
+          weight: bold;
+        }
+      }
+      &Value {
+        width: 250px;
+        padding: 5px 0;
+        background: #40423f;
+        border-radius: 50px;
+      }
+    }
+  }
+}
+
+.slot1 {
+  background: url("../../assets/img/Characters_slot1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.slot2 {
+  background: url("../../assets/img/Characters_slot2.png");
+  background-size: cover;
+  background-position-y: -90px;
+}
+.slot3 {
+  background: url("../../assets/img/Characters_slot3.jpg");
+  background-size: cover;
+  background-position-y: -50px;
+}
+
+@keyframes Characters_header_1 {
+  from {
+    opacity: 0;
+    transform: translateX(-150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes Characters_header_2 {
+  from {
+    opacity: 0;
+    transform: translateX(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes Characters_cards {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
