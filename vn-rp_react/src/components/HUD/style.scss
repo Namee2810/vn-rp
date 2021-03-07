@@ -1,0 +1,139 @@
+@import "../../global/theme.scss";
+
+#hud {
+  color: white;
+  user-select: none;
+  font: {
+    size: 12px;
+    weight: bold;
+  }
+  &_1 {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 160px;
+    height: 48px;
+
+    display: grid;
+    grid-template-columns: 48px 112px;
+    place-items: center;
+    animation: fadeUp 1s ease-in-out backwards;
+  }
+  &_voice {
+    grid-column: 1;
+    grid-row: 1/3;
+
+    width: 36px;
+    height: 36px;
+    border: 2px solid red;
+    border-radius: 50%;
+    margin-bottom: 2px;
+
+    &-icon {
+      font-size: 22px;
+    }
+  }
+  &_time {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    white-space: nowrap;
+
+    color: rgb(255, 196, 0);
+    justify-self: flex-start;
+    padding-right: 5px;
+
+    &-icon {
+      font-size: 17px;
+    }
+  }
+  &_cash {
+    padding-bottom: 5px;
+    justify-self: flex-end;
+    grid-column: 2;
+    grid-row: 2;
+    padding-right: 5px;
+
+    &-icon {
+      font-size: 17px;
+    }
+  }
+  &_2 {
+    position: absolute;
+    bottom: 5px;
+    right: 165px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 215px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+    grid-template-columns: 119px 50px 46px;
+    grid-template-rows: 1fr 1fr;
+
+    transition: all 0.3s ease-in;
+    animation: hud_2 0.3s ease-out backwards;
+  }
+  &_veh {
+    &Lock {
+      grid-column: 3;
+      grid-row: 1/3;
+      width: 36px;
+      height: 36px;
+      border: 2px solid red;
+      border-radius: 50%;
+      margin-bottom: 1px;
+
+      &-icon {
+        font-size: 22px;
+      }
+    }
+    &Speed {
+      grid-column: 1;
+      grid-row: 1/3;
+      font-size: 18px;
+      padding-bottom: 5px;
+      &-icon {
+        color: red;
+      }
+    }
+    &HP {
+      padding-bottom: 2px;
+      &-icon {
+        font-size: 17px;
+        transform: translateY(4px);
+      }
+    }
+    &Fuel {
+      grid-column: 2;
+      grid-row: 1;
+      &-icon {
+        font-size: 17px;
+        transform: translateY(4px);
+      }
+    }
+  }
+}
+
+.hud {
+  &_voice-on {
+    border-color: $color-primary !important;
+  }
+  &_veh {
+    &Speed-on {
+      color: $color-primary !important;
+    }
+    &Lock-on {
+      border-color: $color-primary !important;
+    }
+  }
+}
+@keyframes hud_2 {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,58 @@
+#hud {
+  &_shortcuts {
+    animation: fadeLeft 1s ease-in-out backwards;
+
+    &_open {
+      position: absolute;
+      right: -8px;
+      top: 41%;
+      transition: all 0.5s;
+
+      &-icon {
+        font-size: 36px;
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+.hud {
+  &_shortcuts {
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    background: rgba(0, 0, 0, 0.3);
+
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: all 0.3s ease-in-out;
+
+    &-close {
+      right: -220px;
+    }
+  }
+  &_shortcut {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0 0px 0 10px;
+
+    display: grid;
+    grid-template-columns: 150px 50px;
+    place-items: center;
+
+    &_des {
+      font-size: 16px;
+      margin-right: 10px;
+      justify-self: flex-start;
+    }
+    &_key {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border: 2px solid white;
+    }
+  }
+}

@@ -1,13 +1,22 @@
+const updatePlayerList = require("./events/features/playerList");
+const loadBlips = require("./modules/loadBlips");
+const loadFactions = require("./modules/loadFactions");
+const loadJobs = require("./modules/loadJobs");
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+});
+
 require("./commands");
 require("./events");
 require("./modules/db");
 require("./events");
 require("./commands");
-require("./functions");
-
-mp.events.delayInitialization = true;
 
 function serverInit() {
+  mp.events.delayInitialization = true;
+
+  console.log("Server loading resources ...");
   //sync time
   const setWorldTime = () => {
     const now = new Date();
@@ -18,7 +27,10 @@ function serverInit() {
     setWorldTime();
   }, 60000);
 
-  mp.events.delayInitialization = true;
+  //player online
+  updatePlayerList();
+  loadBlips();
+  loadFactions();
+  loadJobs();
 }
-
 serverInit();

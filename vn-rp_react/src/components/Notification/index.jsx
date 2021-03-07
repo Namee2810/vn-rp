@@ -10,16 +10,17 @@ function createNoti(type, message) {
   notification[type]({
     key: count,
     message,
+    duration: 5,
     onClose: () => {
       list.shift();
-    }
+    },
   });
   list.push(count);
 }
 
 function Notification(props) {
   const test = () => {
-    createNoti("error", "OK");
+    createNoti("error", "Bạn không có quyền sử dụng lệnh này!");
   }
   return (
     <div>

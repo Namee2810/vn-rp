@@ -1,0 +1,45 @@
+.playerList {
+  min-width: 600px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  align-self: center;
+  color: white;
+  z-index: 999;
+
+  animation: fade 0.4s ease-in-out backwards;
+
+  &_header {
+    display: grid;
+    grid-template-columns: 50px 300px 300px 100px 50px;
+    font: {
+      size: 18px;
+      weight: 500;
+    }
+    border-bottom: 2px solid white;
+  }
+  &_body {
+    overflow-y: scroll;
+    max-height: 600px;
+  }
+  &_item {
+    display: grid;
+    grid-template-columns: 50px 300px 300px 100px 50px;
+    height: 40px;
+    place-items: center;
+
+    font: {
+      size: 16px;
+    }
+    &-highlight {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+  &_number {
+    height: 25px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+  }
+}

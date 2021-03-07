@@ -1,0 +1,72 @@
+#hud_shortcuts {
+  -webkit-animation: fadeLeft 1s ease-in-out backwards;
+          animation: fadeLeft 1s ease-in-out backwards;
+}
+
+#hud_shortcuts_open {
+  position: absolute;
+  right: -8px;
+  top: 41%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#hud_shortcuts_open-icon {
+  font-size: 36px;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.hud_shortcuts {
+  position: absolute;
+  right: 20px;
+  top: 30%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 5px 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hud_shortcuts-close {
+  right: -220px;
+}
+
+.hud_shortcut {
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+  padding: 0 0px 0 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 150px 50px;
+      grid-template-columns: 150px 50px;
+  place-items: center;
+}
+
+.hud_shortcut_des {
+  font-size: 16px;
+  margin-right: 10px;
+  justify-self: flex-start;
+}
+
+.hud_shortcut_key {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid white;
+}
+/*# sourceMappingURL=style.css.map */

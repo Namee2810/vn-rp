@@ -1,8 +1,8 @@
 const sha256 = require("sha256");
-const generateKey = require("../../modules/generateKey");
+const { generateKey } = require("../../modules/common");
 const rpc = require("rage-rpc");
 const sendMail = require("../../modules/sendMail");
-const { setPlayerData } = require("../../functions/player");
+const { setPlayerData } = require("../features/player");
 
 rpc.register("server:auth.register", async (data, player) => {
   const { email, password } = data;
@@ -140,6 +140,5 @@ rpc.register("server:auth.login", async (data, player) => {
       mp.query(`UPDATE accounts SET lastIP='${ip}', lastDate=NOW() WHERE email='${email}'`);
     }
   }
-  console.log(code);
   return code;
 })

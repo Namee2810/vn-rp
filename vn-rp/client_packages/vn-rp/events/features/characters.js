@@ -1,18 +1,12 @@
 const rpc = require("./rage-rpc.min.js");
-let charactersCEF;
 const player = mp.players.local;
 
 rpc.register("client:characters.show", () => {
-  if (charactersCEF) charactersCEF.active = true;
-  else charactersCEF = mp.browsers.new("package://vn-rp/CEF/index.html#/characters");
-})
-
-rpc.register("client:characters.destroy", () => {
-  charactersCEF.destroy()
+  global.cef("/characters");
 })
 
 rpc.register("client:characters.customize", (slot) => {
-  rpc.call("client:camera.set", {
+  rpc.call("camera.set", {
     coord: [402.875, -999.367, -99],
     point: [402.875, -996.474, -99],
   });
@@ -22,22 +16,26 @@ rpc.register("client:characters.customize", (slot) => {
   player.setComponentVariation(8, 15, 0, 2);
 })
 rpc.register("client:characters.customizeFinish", () => {
-  rpc.call("client:camera.set", {
+  rpc.call("camera.set", {
     coord: [722.94, 1498.46, 479.29],
     point: [636.72, 823.06, 357.82],
   });
 });
+
+rpc.register("client:characters.select", () => {
+  rpc.call("camera.disable");
+})
 
 rpc.register("client:characters.customizeHandle", (data) => {
   const { type, value } = data;
   switch (type) {
     case "view": {
       const { view, gender } = value;
-      if (view === 1) rpc.call("client:camera.set", {
+      if (view === 1) rpc.call("camera.set", {
         coord: gender ? [402.875, -997.5, -98.34] : [402.875, -997.5, -98.25],//coord: [402.778, -999.367, -99.004],
         point: gender ? [402.875, -996.5, -98.34] : [402.875, -997, -98.25],//point: [402.875, -996.474, -99],
       });
-      else rpc.call("client:camera.set", {
+      else rpc.call("camera.set", {
         coord: [402.875, -999.367, -99],
         point: [402.875, -996.474, -99],
       });
@@ -45,6 +43,8 @@ rpc.register("client:characters.customizeHandle", (data) => {
     }
     case "gender": {
       player.model = value ? mp.game.joaat("mp_m_freemode_01") : mp.game.joaat("mp_f_freemode_01");
+      player.setComponentVariation(3, 15, 0, 2);
+      player.setComponentVariation(8, 15, 0, 2);
       break
     }
     case "parents": {

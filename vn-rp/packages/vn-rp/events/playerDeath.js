@@ -1,6 +1,5 @@
-let spawnPoints = require("../configs/spawnPoints.json");
+const { spawnPlayer } = require("./features/player");
 
 mp.events.add('playerDeath', (player) => {
-  player.spawn(spawnPoints[Math.floor(Math.random() * spawnPoints.length)]);
-  player.health = 100;
+  spawnPlayer(player)
 });

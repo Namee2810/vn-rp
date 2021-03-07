@@ -1,0 +1,393 @@
+.ant-btn:hover {
+  color: #1ed760 !important;
+  border-color: #1ed760;
+}
+
+.ant-btn:focus {
+  color: #1ed760;
+  border-color: #1ed760;
+}
+
+.ant-btn-primary {
+  background: #1ed760 !important;
+  border: #1ed760;
+}
+
+.ant-btn-primary:hover {
+  color: white !important;
+  background: #0bc24b;
+}
+
+.ant-btn-primary:focus {
+  color: white !important;
+  background: #1ed760;
+  border: #1ed760;
+}
+
+.ant-popover-inner {
+  background: #222;
+}
+
+.ant-popover-message-title {
+  color: white;
+}
+
+.ant-popover-message > .anticon {
+  color: white;
+}
+
+.ant-popover-arrow {
+  border-color: #222 !important;
+}
+
+.ant-popover .ant-btn {
+  background: none;
+  color: white;
+}
+
+.ant-divider {
+  margin: 20px 0 10px !important;
+}
+
+.ant-divider::before {
+  border-top-color: #1ed760 !important;
+}
+
+.ant-divider::after {
+  border-top-color: #1ed760 !important;
+}
+
+.ant-divider-inner-text {
+  color: #1ed760;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ant-slider {
+  margin: 6px;
+}
+
+.ant-slider:hover .ant-slider-track {
+  background: #1ed760;
+}
+
+.ant-slider:hover .ant-slider-handle {
+  border-color: #1ed760 !important;
+}
+
+.ant-slider-track {
+  background: #1ed760;
+}
+
+.ant-slider-handle {
+  border-color: white;
+}
+
+.ant-slider-handle:focus {
+  border-color: #1ed760;
+}
+
+.ant-notification-notice {
+  padding: 10px;
+  width: 330px;
+}
+
+.ant-notification-notice-close {
+  display: none;
+}
+
+.ant-notification-notice-message {
+  margin-left: 30px !important;
+  padding: 0 !important;
+}
+
+.ant-notification-notice-icon {
+  margin-left: 0;
+  margin-top: 1px;
+}
+
+.ant-tag {
+  font-weight: bold;
+}
+
+.form {
+  position: relative;
+  width: 300px;
+  font-size: 18px;
+}
+
+.form_field {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 45px;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid #dadada;
+  color: #646464;
+}
+
+.form_field:focus {
+  border-color: #1ed760;
+}
+
+.form_input {
+  padding: 0 10px 0 15px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.form_submit {
+  margin-top: 10px;
+}
+
+.form_error {
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  white-space: nowrap;
+  text-align: center;
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-animation: form_error 0.25s ease-in;
+          animation: form_error 0.25s ease-in;
+}
+
+@-webkit-keyframes form_error {
+  from {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes form_error {
+  from {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+input {
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.select {
+  color: #1ed760;
+}
+
+.select-bg {
+  background: #1ed760 !important;
+}
+
+.btn {
+  outline: none;
+  border: 1px solid transparent;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 20px;
+  border-radius: 50px;
+  min-height: 45px;
+  min-width: 100px;
+  -webkit-transition: background 0.25s ease-in-out;
+  transition: background 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:active {
+  -webkit-box-shadow: 0 1.5px 3.1px rgba(0, 0, 0, 0.035), 0 12px 25px rgba(0, 0, 0, 0.07);
+          box-shadow: 0 1.5px 3.1px rgba(0, 0, 0, 0.035), 0 12px 25px rgba(0, 0, 0, 0.07);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn-success {
+  background: #1ed760;
+  color: white;
+}
+
+.btn-success:hover {
+  background: #0bc24b;
+}
+
+.btn-success-outline {
+  border-color: #1ed760;
+  color: white;
+  background: none;
+}
+
+.btn-success-outline:hover {
+  background: #0bc24b;
+}
+
+.btn-info {
+  background: #3ea1c8;
+  color: white;
+}
+
+.btn-info:hover {
+  background: #2b89ad;
+}
+
+.btn-info-outline {
+  border-color: #3ea1c8;
+  color: white;
+  background: none;
+}
+
+.btn-info-outline:hover {
+  background: #2b89ad;
+}
+
+.btn-warning {
+  background: #ffb818;
+  color: white;
+}
+
+.btn-warning:hover {
+  background: #e49f00;
+}
+
+.btn-warning-outline {
+  border-color: #ffb818;
+  color: white;
+  background: none;
+}
+
+.btn-warning-outline:hover {
+  background: #e49f00;
+}
+
+.btn-danger {
+  background: #ff0000;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #e40000;
+}
+
+.btn-danger-outline {
+  border-color: #ff0000;
+  color: white;
+  background: none;
+}
+
+.btn-danger-outline:hover {
+  background: #e40000;
+}
+
+.ant-notification {
+  z-index: 999;
+}
+
+.icon {
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+.coin {
+  color: #ffd000;
+}
+
+.tag {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  font-weight: bold;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(50px);
+            transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes fadeUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+/*# sourceMappingURL=style.css.map */

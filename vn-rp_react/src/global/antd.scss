@@ -85,3 +85,22 @@
     }
   }
 }
+.ant-notification-notice {
+  padding: 10px;
+  width: 330px;
+
+  &-close {
+    display: none;
+  }
+  &-message {
+    margin-left: 30px !important;
+    padding: 0 !important;
+  }
+  &-icon {
+    margin-left: 0;
+    margin-top: 1px;
+  }
+}
+.ant-tag {
+  font-weight: bold;
+}

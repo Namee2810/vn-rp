@@ -1,5 +1,7 @@
 const rpc = require("rage-rpc");
-const { setPlayerData } = require("../../functions/player");
+const { setPlayerData, spawnPlayer } = require("./player");
+const playerList = require("./playerList");
+
 
 rpc.register("server:characters.customize", (_, player) => {
   player = player.player;
@@ -26,4 +28,13 @@ rpc.register("server:characters.create", async (data, player) => {
     code = 1;
   }
   return code;
+})
+rpc.register("server:characters.select", async (slot, player) => {
+  player = player.player;
+
+  const res = await mp.query(`SELECT * FROM characters WHERE id=${player.account.slot[slot]}`)
+    .catch(err => console.log(err));
+  await setPlayerData(player, "player", res[0]);
+  spawnPlayer(player, 1);
+  playerList.add(player.id);
 })

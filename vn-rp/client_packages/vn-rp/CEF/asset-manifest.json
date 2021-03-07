@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "./static/css/main.3b1807c6.chunk.css",
-    "main.js": "./static/js/main.74962c3e.chunk.js",
-    "main.js.map": "./static/js/main.74962c3e.chunk.js.map",
+    "main.css": "./static/css/main.81c78b10.chunk.css",
+    "main.js": "./static/js/main.e6727ff0.chunk.js",
+    "main.js.map": "./static/js/main.e6727ff0.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.b4a8d3dd.js",
     "runtime-main.js.map": "./static/js/runtime-main.b4a8d3dd.js.map",
     "static/css/2.4ee63354.chunk.css": "./static/css/2.4ee63354.chunk.css",
-    "static/js/2.7b871991.chunk.js": "./static/js/2.7b871991.chunk.js",
-    "static/js/2.7b871991.chunk.js.map": "./static/js/2.7b871991.chunk.js.map",
+    "static/js/2.37ffaebf.chunk.js": "./static/js/2.37ffaebf.chunk.js",
+    "static/js/2.37ffaebf.chunk.js.map": "./static/js/2.37ffaebf.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.4ee63354.chunk.css.map": "./static/css/2.4ee63354.chunk.css.map",
-    "static/css/main.3b1807c6.chunk.css.map": "./static/css/main.3b1807c6.chunk.css.map",
-    "static/js/2.7b871991.chunk.js.LICENSE.txt": "./static/js/2.7b871991.chunk.js.LICENSE.txt",
+    "static/css/main.81c78b10.chunk.css.map": "./static/css/main.81c78b10.chunk.css.map",
+    "static/js/2.37ffaebf.chunk.js.LICENSE.txt": "./static/js/2.37ffaebf.chunk.js.LICENSE.txt",
     "static/media/0.85e64ed0.PNG": "./static/media/0.85e64ed0.PNG",
     "static/media/1.a2505572.PNG": "./static/media/1.a2505572.PNG",
     "static/media/10.c01a297d.PNG": "./static/media/10.c01a297d.PNG",
@@ -59,15 +59,16 @@
     "static/media/8.12642818.PNG": "./static/media/8.12642818.PNG",
     "static/media/9.849b1706.PNG": "./static/media/9.849b1706.PNG",
     "static/media/Auth_bg.6b7b66d5.png": "./static/media/Auth_bg.6b7b66d5.png",
-    "static/media/style.scss": "./static/media/Characters_slot3.32638928.jpg",
+    "static/media/style.scss": "./static/media/Phone_bg.1deeb622.jpg",
     "static/media/add-icon.29bb5c37.png": "./static/media/add-icon.29bb5c37.png",
+    "static/media/bank-icon.b54ed517.PNG": "./static/media/bank-icon.b54ed517.PNG",
     "static/media/lock-icon.6348aa49.png": "./static/media/lock-icon.6348aa49.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b4a8d3dd.js",
     "static/css/2.4ee63354.chunk.css",
-    "static/js/2.7b871991.chunk.js",
-    "static/css/main.3b1807c6.chunk.css",
-    "static/js/main.74962c3e.chunk.js"
+    "static/js/2.37ffaebf.chunk.js",
+    "static/css/main.81c78b10.chunk.css",
+    "static/js/main.e6727ff0.chunk.js"
   ]
 }

@@ -1,34 +1,57 @@
-import Notification from 'components/Notification';
+import HUD from 'components/HUD';
+import { createNoti } from 'components/Notification';
+import PlayerList from 'components/PlayerList';
+import Prompt from 'components/Prompt';
+import history from 'global/history';
+import mp from 'global/mp';
 import Auth from 'pages/Auth';
 import Characters from 'pages/Characters';
 import Customize from 'pages/Customize';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router';
-import {
-  HashRouter as Router
-} from "react-router-dom";
-import { setProduction } from 'store/slice';
+import Phone from 'pages/Phone';
+import rpc from "rage-rpc";
+import React, { useState } from 'react';
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 
+if (mp) {
+  rpc.register("cef:showNoti", data => {
+    const { type, message } = data;
+    createNoti(type, message);
+  })
+}
 function App(props) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      dispatch(setProduction({ set: true }))
-    }
-  }, [dispatch])
+  const [playerList, setPlayerList] = useState(0);
+  const [hud, setHud] = useState(0);
+
+  if (mp) {
+    rpc.register("cef:show", value => {
+      switch (value) {
+        case "hud": {
+          setHud(!hud);
+          break
+        }
+        case "playerlist": {
+          setPlayerList(!playerList);
+          break
+        }
+        default: break
+      }
+    })
+    rpc.register("cef:url", url => history.push(url))
+  }
+
   return (
-    <div>
+    <div className="App">
       <Router>
-        <div className="App">
-          <Switch>
-            <Route exact path="/auth" component={Auth} />
-            <Route exact path="/characters" component={Characters} />
-            <Route exact path="/customize" component={Customize} />
-            <Route exact path="/noti" component={Notification} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/auth" component={Auth} />
+          <Route exact path="/characters" component={Characters} />
+          <Route exact path="/customize" component={Customize} />
+          <Route exact path="/phone" component={Phone} />
+        </Switch>
+        {playerList ? <PlayerList /> : ""}
+        {hud ? <HUD /> : ""}
+        <Prompt />
       </Router>
     </div>
 
