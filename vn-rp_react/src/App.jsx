@@ -20,8 +20,8 @@ if (mp) {
   })
 }
 function App(props) {
-  const [playerList, setPlayerList] = useState(0);
-  const [hud, setHud] = useState(0);
+  const [playerList, setPlayerList] = useState(false);
+  const [hud, setHud] = useState(false);
 
   if (mp) {
     rpc.register("cef:show", value => {
@@ -49,12 +49,11 @@ function App(props) {
           <Route exact path="/customize" component={Customize} />
           <Route exact path="/phone" component={Phone} />
         </Switch>
-        {playerList ? <PlayerList /> : ""}
-        {hud ? <HUD /> : ""}
+        <PlayerList show={playerList} />
+        {hud && <HUD />}
         <Prompt />
       </Router>
     </div>
-
   )
 }
 

@@ -1,4 +1,4 @@
-const { updatePlayerData } = require("./player");
+const { updatePlayerData, setPlayerData } = require("./player");
 const rpc = require("rage-rpc");
 
 function isAdmin(player, level = 1) {
@@ -10,9 +10,8 @@ function isHelper(player, level = 0) {
   return false
 }
 function giveCash(player, cash) {
-  player.info.cash += Number(cash);
+  setPlayerData(player, "cash", player.info.cash + Number(cash));
   rpc.callBrowsers(player, "cef:HUD", { type: "cash", value: player.info.cash })
-  updatePlayerData(player, "cash");
 }
 function sendAdmin(level = 0, message) {
   message = `!{FF0000}ADMIN!{FFFFFF}: ${message}`;

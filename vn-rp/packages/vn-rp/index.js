@@ -10,6 +10,7 @@ process.on('unhandledRejection', (reason, p) => {
 require("./commands");
 require("./events");
 require("./modules/db");
+require("./modules/global");
 require("./events");
 require("./commands");
 

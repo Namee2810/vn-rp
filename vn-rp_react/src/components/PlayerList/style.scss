@@ -1,12 +1,12 @@
 .playerList {
+  position: absolute;
   min-width: 600px;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.5);
   align-self: center;
   color: white;
   z-index: 999;
-
-  animation: fade 0.4s ease-in-out backwards;
+  transition: all 0.5s;
 
   &_header {
     display: grid;
@@ -41,5 +41,21 @@
     justify-content: flex-end;
     align-items: center;
     font-size: 14px;
+  }
+  &_anim {
+    &-enter {
+      transform: translateY(50px);
+      opacity: 0;
+      &-active {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+    &-exit {
+      &-active {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+    }
   }
 }

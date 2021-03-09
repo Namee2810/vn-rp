@@ -5,7 +5,7 @@ function updatePlayerList() {
   setInterval(() => {
     playerList = [];
     mp.players.forEach(p => {
-      if (!p.logged) return true;
+      if (!p.getVariable("logged")) return true;
       playerList.push({
         id: p.id,
         name: p.info.name,

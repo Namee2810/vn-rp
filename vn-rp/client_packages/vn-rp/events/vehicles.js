@@ -9,7 +9,7 @@ function playerEnterVehicle({ vehicle, seat }) {
     mp.players.local.setConfigFlag(429, true);
     global.HUD("inVeh", true);
     vehSync = setInterval(() => {
-      if (!mp.players.local.isSittingInAnyVehicle(vehicle)) return playerLeaveVehicle(vehicle, seat)
+      if (!mp.players.local.isSittingInAnyVehicle()) return playerLeaveVehicle(vehicle, seat)
       vehSyncHUD({
         speed: Math.round(vehicle.getSpeed() * 3.6), hp: Math.round(vehicle.getBodyHealth() / 10),
         engine: vehicle.getIsEngineRunning(), lock: vehicle.getDoorLockStatus()

@@ -1,31 +1,44 @@
 import mp from 'global/mp';
 import rpc from "rage-rpc";
 import React, { useEffect, useState } from 'react';
-import { animated, useTransition } from 'react-spring';
+import { default as parse } from 'react-html-parser';
+import { CSSTransition } from 'react-transition-group';
 import "./style.scss";
 
 function Prompt(props) {
-  const [prompt, setPrompt] = useState(false);
+  const [show, setShow] = useState(false)
+  const [prompt, setPrompt] = useState(null);
+
+  const showPrompt = (value) => {
+    setPrompt(parse(value));
+    setShow(true);
+  }
+  const hidePrompt = () => {
+    setShow(false);
+    setTimeout(() => {
+      setPrompt(null);
+    }, 500);
+  }
+
   useEffect(() => {
-    if (mp)
-      rpc.register("cef:showPrompt", value => {
-        setPrompt(value);
-      })
+    if (mp) {
+      rpc.register("cef:showPrompt", showPrompt)
+      rpc.register("cef:hidePrompt", hidePrompt)
+    }
   }, [])
-  const transitions = useTransition(prompt, null, {
-    from: { opacity: 0, transform: "translateY(50px)" },
-    enter: { opacity: 1, transform: "translateY(0px)" },
-    leave: { opacity: 0, transform: "translateY(50px)" },
-  })
   return (
-    transitions.map(({ item, key, props }) =>
-      item && <animated.div key={key} style={props}>
-        <div className="Prompt">
-          {prompt}
-        </div>
-      </animated.div>
-    )
-  );
+    <CSSTransition
+      in={show}
+      timeout={500}
+      classNames='Prompt_anim'
+      unmountOnExit
+    >
+      <div className="Prompt">
+        {prompt}
+      </div>
+
+    </CSSTransition>
+  )
 }
 
 export default Prompt;

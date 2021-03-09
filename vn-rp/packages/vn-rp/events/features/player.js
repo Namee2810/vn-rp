@@ -3,7 +3,7 @@ let spawnPoints = require("../../configs/spawnPoints.json");
 
 function spawnPlayer(player, first = 0) {
   if (first === 1) {
-    player.logged = true;
+    player.setVariable("logged", true);
     player.model = player.info.gender ? mp.joaat("mp_m_freemode_01") : mp.joaat("mp_f_freemode_01");
     for (let i = 0; i < 12; i++) player.setClothes(i, player.info.clothes[i], 0, 2);
     player.setHairColor(player.info.hairColor[0], player.info.hairColor[1]);
@@ -55,6 +55,7 @@ function setPlayerData(player, option, data) {
     }
     default: {
       player.info[option] = data;
+      updatePlayerData(player, option);
       break
     }
   }
@@ -72,7 +73,10 @@ function updatePlayerData(player, option) {
       mp.query(`UPDATE characters SET cash=${player.info.cash} WHERE id=${id}`).catch(err => console.log(err));
       break
     }
-
+    case "job": {
+      mp.query(`UPDATE characters SET job=${player.info.job} WHERE id=${id}`).catch(err => console.log(err));
+      break
+    }
     default: break
   }
 }

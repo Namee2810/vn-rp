@@ -1,4 +1,4 @@
-const rpc = require("rage-rpc");
+const rpc = require("rage-rpc")
 
 global.noti = (player, type, message) => {
   //1 = success, 2 = info, 3 = warning, 4 = error
@@ -11,3 +11,7 @@ global.noti = (player, type, message) => {
 global.msg = {
   adminRequire: "Bạn không có quyền sử dụng lệnh này!"
 }
+global.showPrompt = (player, text) => {
+  if (!text) rpc.callBrowsers(player, "cef:hidePrompt");
+  else rpc.callBrowsers(player, "cef:showPrompt", text);
+};

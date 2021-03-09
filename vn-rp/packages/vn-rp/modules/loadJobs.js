@@ -1,9 +1,8 @@
-global.jobs = []
 async function loadJobs() {
   const jobs = await mp.query("SELECT * FROM jobs")
     .catch(err => console.log(err));
   global.jobs = jobs;
-  jobs.forEach(j => {
+  jobs.forEach((j, index) => {
     //Blip
     mp.blips.new(j.blip, new mp.Vector3(j.x, j.y, j.z), {
       name: j.name,
@@ -18,14 +17,16 @@ async function loadJobs() {
       dimension: 0
     });
     //Label
-    const jobLabel = `ID ~g~${j.id}~w~\nCong viec ~g~${j.name}~w~\nNhan ~g~Y~w~ de nhan cong viec\nNhan ~r~N~w~ de nghi viec`
+    const jobLabel = `ID ~g~${j.id}~w~\nCong viec ~g~${j.name}`
     mp.labels.new(jobLabel, new mp.Vector3(j.x, j.y, j.z + 0.2), {
       los: true,
       font: 0,
       drawDistance: 50,
       dimension: 0
     });
+    global.jobs[index].shape = mp.colshapes.newCircle(j.x, j.y, 1.5, 0);
   });
   console.log(`Jobs: ${jobs.length} loaded`);
 }
+
 module.exports = loadJobs;

@@ -14,6 +14,7 @@
   background: url("../../assets/img/phone/Phone_bg.jpg");
   background-size: cover;
   background-position: center;
+  animation: phoneUp 0.75s ease-in-out backwards;
 
   &_header {
     display: grid;
@@ -69,5 +70,14 @@
       font-size: 12px;
       font-weight: bold;
     }
+  }
+}
+
+@keyframes phoneUp {
+  0% {
+    bottom: -600px;
+  }
+  100% {
+    bottom: 100px;
   }
 }

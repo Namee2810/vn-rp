@@ -1,1 +1,0 @@
-mp.events.add('playerJoin', player => player.logged = false);
